@@ -42,6 +42,7 @@ class App extends Component {
       isLoading,
       products: { data },
     } = this.state
+
     return (
       <div>
         <h1>E-Commerce app</h1>
