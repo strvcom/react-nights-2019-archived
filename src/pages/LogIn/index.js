@@ -7,6 +7,7 @@ import { Form, GlobalFormError } from '../../components/Form'
 import { Input } from '../../components/Input'
 import Button from '../../components/Button'
 import { schema } from './schema'
+import { logIn } from '../../api/log-in'
 
 class LogIn extends Component {
   state = {
@@ -21,7 +22,8 @@ class LogIn extends Component {
   handleSubmit = async (values, { setSubmitting }) => {
     try {
       setSubmitting(true)
-      // const token = await logIn(values.email, values.password)
+      const ownerId = await logIn(values.email, values.password)
+      console.log(ownerId)
       this.props.history.push('/account')
     } catch (error) {
       this.setState({
