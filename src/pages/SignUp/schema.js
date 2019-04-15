@@ -8,8 +8,8 @@ export const schema = object().shape({
   password: string()
     .min(6, 'Password is too short')
     .max(30, 'Password is too long')
-    .matches(/[0-9]/u, 'Password should contain one number')
-    .matches(/[a-z]/u, 'Password should contain at least one lowercase letter')
+    // .matches(/[0-9]/u, 'Password should contain one number')
+    // .matches(/[a-z]/u, 'Password should contain at least one lowercase letter')
     .required('Password is required'),
   passwordConfirm: string()
     .oneOf([ref('password')], 'Passwords must match')

@@ -10,6 +10,7 @@ import { SignUp } from './pages/SignUp'
 import { Account } from './pages/Account'
 import { PrivateRoute } from './components/PrivateRoute'
 import store from './store'
+import { LogIn } from './pages/LogIn'
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route path="/" exact component={ProductList} />
             <Route path="/cart" component={Cart} />
             <Route path="/signup" component={SignUp} />
+            <Route path="/login" component={LogIn} />
             <PrivateRoute path="/account" component={Account} />
             <Route path="/:productId" component={ProductDetail} />
           </Switch>
