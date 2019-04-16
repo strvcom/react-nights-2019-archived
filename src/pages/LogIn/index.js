@@ -9,8 +9,12 @@ import Button from '../../components/Button'
 import { schema } from './schema'
 import { logIn } from '../../api/log-in'
 import { getCustomerById } from '../../api/customers/get-customer'
+import { connect } from 'react-redux'
+import { setCustomer } from '../../store/customer/actions'
 
-class LogIn extends Component {
+class LogInComponent extends Component
+
+{
   state = {
     globalError: '',
   }
@@ -27,6 +31,7 @@ class LogIn extends Component {
       console.log(ownerId)
       const customerJson = await getCustomerById(ownerId)
       console.log('customerDetail:' + JSON.stringify(customerJson))
+      this.props.setCustomer(customerJson)
       this.props.history.push('/account')
     } catch (error) {
       this.setState({
@@ -64,5 +69,19 @@ class LogIn extends Component {
     )
   }
 }
+
+
+const mapStateToProps = state => ({
+  state
+})
+
+const mapDispatchToProps = {
+  setCustomer,
+}
+
+const LogIn = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LogInComponent)
 
 export { LogIn }
