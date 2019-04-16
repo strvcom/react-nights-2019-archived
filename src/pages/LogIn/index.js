@@ -8,6 +8,7 @@ import { Input } from '../../components/Input'
 import Button from '../../components/Button'
 import { schema } from './schema'
 import { logIn } from '../../api/log-in'
+import { getCustomerById } from '../../api/customers/get-customer'
 
 class LogIn extends Component {
   state = {
@@ -24,6 +25,8 @@ class LogIn extends Component {
       setSubmitting(true)
       const ownerId = await logIn(values.email, values.password)
       console.log(ownerId)
+      const customerJson = await getCustomerById(ownerId)
+      console.log('customerDetail:' + JSON.stringify(customerJson))
       this.props.history.push('/account')
     } catch (error) {
       this.setState({
